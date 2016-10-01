@@ -1,0 +1,10 @@
+".text.html":
+  "Firebase Document":
+    "prefix": "firebase-document"
+    "body": """
+      <firebase-document
+        app-name="${1:<YOUR-FIREBASE-APP>}"
+      	location="https://${1:<YOUR-FIREBASE-APP>}.firebaseio.com"
+      	data="{{${2:data}}}">
+      </firebase-document>$0
+    """

@@ -1,0 +1,12 @@
+".text.html":
+  "Firebase App":
+    "prefix": "firebase-app"
+    "body": """
+      <firebase-app
+        name="${1:<YOUR-FIREBASE-APP>}"
+        app="{{${2:app}}}"
+        auth-domain="${1:<YOUR-FIREBASE-APP>}.firebaseapp.com"
+        database-url="https://${1:<YOUR-FIREBASE-APP>}.firebaseio.com/"
+        api-key="${3:<YOUR-API-KEY>}">
+      </firebase-app>$0
+    """

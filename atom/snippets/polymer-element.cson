@@ -1,0 +1,37 @@
+".text.html":
+  "Polymer Element":
+    "prefix": "polymer-element"
+    "body": """
+    <dom-module id="$1">
+      <template>
+        <style>
+          :host {
+            display: block;
+          }
+        </style>
+        $4
+      </template>
+      <script>
+        (function(Polymer) {
+          Polymer({
+            is: '$1',
+            properties: {
+              $2: {
+                type:String,
+                notify:true
+              }
+            },
+            observers: [
+              'debug($2)'
+            ],
+            debug: function(object) {
+              console.log(object);
+            },
+            ready: function() {
+              console.log('$1 has been created.');$3
+            }
+          });
+        })(window.Polymer);
+      </script>
+    </dom-module>
+    """

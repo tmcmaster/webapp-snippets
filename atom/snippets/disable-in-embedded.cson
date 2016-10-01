@@ -1,0 +1,5 @@
+# These null out the snippets so the snippets are not available when in a
+# tag or in embedded contexts like <script> and <style>
+".text.html .embedded":
+  "template-if":
+    "prefix": "template-if"

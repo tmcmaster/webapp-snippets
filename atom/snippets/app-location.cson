@@ -1,0 +1,6 @@
+".text.html":
+  "App Location":
+    "prefix": "app-location"
+    "body": """
+      <app-location route="{{${1:route}}}"${2: use-hash-as-path}></app-location>$0
+    """

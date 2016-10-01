@@ -1,0 +1,7 @@
+".text.html":
+  "web components polyfill":
+    "prefix": "webcomponents"
+    "body": """
+    <script src="${1:bower_components}/webcomponentsjs/webcomponents-lite.js"></script>
+    $0
+    """

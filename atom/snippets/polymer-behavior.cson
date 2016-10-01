@@ -1,0 +1,13 @@
+".text.html":
+  "polymer behavior":
+    "prefix": "polymer-behavior"
+    "body": """
+      <script>
+        (function(Polymer) {
+          Polymer.TM = Polymer.TM || {};
+          Polymer.TM.$1 = {
+            $2
+          };
+        })(window.Polymer);
+      </script>
+    """

@@ -1,0 +1,7 @@
+".text.html":
+  "paper fab":
+    "prefix": "paper-fab"
+    "body": """
+    <paper-fab icon="${1:add}"></paper-fab>
+    $0
+    """

@@ -1,0 +1,11 @@
+".text.html":
+  "Firebase Query":
+    "prefix": "firebase-query"
+    "body": """
+      <firebase-query
+          id="query-${1}"
+          app-name="${2:<YOUR-FIREBASE-APP>}"
+          path="/${3:data}"
+          data="{{${4:data}}}">
+      </firebase-query>$0
+    """

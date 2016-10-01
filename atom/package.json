@@ -1,0 +1,14 @@
+{
+  "name": "webapp-snippets",
+  "version": "0.0.0",
+  "description": "Snippets to help with rapid web application development.",
+  "keywords": [
+  ],
+  "repository": "",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}
