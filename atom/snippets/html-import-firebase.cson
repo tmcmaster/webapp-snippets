@@ -1,0 +1,6 @@
+".text.html":
+  "Import Firebase":
+    "prefix": "import-firebase"
+    "body": """
+      <link rel="import" href="${1:..}/bower_components/polymerfire/firebase-$2.html">$0
+    """
