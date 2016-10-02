@@ -4,7 +4,7 @@
     "body": """
       <firebase-document
         app-name="${1:<YOUR-FIREBASE-APP>}"
-      	location="https://${1:<YOUR-FIREBASE-APP>}.firebaseio.com"
-      	data="{{${2:data}}}">
+      	path="/${1:<PATH>}"
+      	data="{{${2:object}}}">
       </firebase-document>$0
     """

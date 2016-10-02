@@ -1,14 +1,14 @@
 ".text.html":
-  "Polymer page template (wcs)":
-    "prefix": "phs"
+  "Polymer Launch":
+    "prefix": "polymer-launch"
     "body": """
     <!DOCTYPE html>
     <html>
       <head>
         <meta charset="utf-8">
 
-        <title>${1}</title>
-        <meta name="description" content="${2}">
+        <title>${1:Demo Application}</title>
+        <meta name="description" content="${2:Demo Application}">
 
         <!-- Mobile -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,21 +23,14 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
 
-        <!-- Load Web Components when not supported-->
-        <script>
-          var webComponentsSupported = ('registerElement' in document
-              && 'import' in document.createElement('link')
-              && 'content' in document.createElement('template'));
+        <!-- Web Components -->
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
-          if (!webComponentsSupported) {
-            var script = document.createElement('script');
-            script.src = 'bower_components/webcomponentsjs/webcomponents-lite.js';
-            document.head.appendChild(script);
-          }
-        </script>
+        <link rel="import" href="bower_components/polymer/polymer.html">
+        <link rel="import" href="src/tm-${3:app}.html">
       </head>
       <body unresolved>
-        $0
+        <tm-${3:app}></tm-${3:app}>$0
       </body>
     </html>
     """

@@ -47,7 +47,7 @@
 1. Create a Firebase Database
   * Login to the Firebase Console: https://console.firebase.google.com/
   * Create a new database.
-    * For these notes, the database will be 'Polymer Play'.
+    * For these notes, the database will be 'Demo'.
 2. Get the Firebase Database connection details
   * go to the home screen of the database
   * select 'Add Firebase to your web app'.
@@ -87,7 +87,7 @@
 1. In the Firebase Console, select the Database section
 2. Add a top level node called demo1, with value true.
 3. Download database data to local JSON file:
-  * From the commmand line: ```firebase database:get / -o database-data.json```
+  * From the commmand line: ```firebase database:get /demo1 -o database-data.json```
 4. Initalise the database with some useful data
   * Edit the database-data.json file and replace contents with:
 ```json
@@ -138,10 +138,12 @@
 
 ## Connect Polymer to the Firebase Database
 
-1. Install the Firebase Polymer web components
+1. Install the Firebase and Polymer web components
 
   ```shell
   ## from the project base directory
+  bower install --save PolymerElements/paper-elements
+  bower install --save PolymerElements/iron-elements
   bower install --save firebase/polymerfire
   ```
 
@@ -178,11 +180,7 @@
     ```
 
 3. Add login button to the
-  * install paper-button element
-  ```shell
-  ## from the project base directory
-  bower install --save paper-button
-  ```
+
   * Import the button in the import section
   ```xml
   <link rel="import" href="../bower_components/paper-button/paper-button.html">
@@ -201,6 +199,11 @@
 
 4. Add details to first view
 
+  * Add imports to the import section
+  ```xml
+  <link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+  ```
+
   * Add firebase-document element to the template section of view2
   ```xml
     <firebase-document
@@ -210,11 +213,6 @@
     </firebase-document>
   ```
 
-  * install paper-input element
-  ```shell
-  ## from the project base directory
-  bower install --save paper-input
-  ```
   * Import the paper-input in the import section
   ```xml
   <link rel="import" href="../bower_components/paper-input/paper-input.html">
@@ -223,6 +221,7 @@
   * Add the following paper-input to to the first view
     ```xml
     <paper-input label="Title" value="{{details.title}}" disabled></paper-input>
+    <paper-input label="Director" value="{{details.director}}" disabled></paper-input>
     ```
 
   * Add property for the details object
@@ -235,6 +234,11 @@
 
 5. Add list characters to the second view
 
+  * Add imports to the import section
+  ```xml
+  <link rel="import" href="../bower_components/polymerfire/firebase-query.html">
+  ```
+
   * Add firebase-query element to the template section of view2
   ```xml
   <firebase-query
@@ -244,22 +248,11 @@
   </firebase-query>
   ```
 
-  * install iron-list and paper-card elements
-  ```shell
-  ## from the project base directory
-  bower install --save paper-card iron-list
-  ```
-  * Import the paper-input in the import section
-  ```xml
-  <link rel="import" href="../bower_components/paper-card/paper-card.html">
-  <link rel="import" href="../bower_components/iron-list/iron-list.html">
-  ```
-
   * Add the following paper-list to to the first view
     ```xml
     <ul>
-      <template is="dom-repeat" items="[[characters]]" index-as="index">
-        <li>{{item.name}}</li>
+      <template is="dom-repeat" items="[[characters]]">
+        <li>{{item.name}} ({{item.actor}})</li>
       </template>
     </ul>
     ```

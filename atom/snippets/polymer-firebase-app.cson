@@ -1,0 +1,143 @@
+".text.html":
+  "Polymer Firebase App":
+    "prefix": "polymer-firebase-app"
+    "body": """
+      <link rel="import" href="../bower_components/paper-card/paper-card.html">
+      <link rel="import" href="../bower_components/paper-input/paper-input.html">
+      <link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+      <link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+      <link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+      <link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+      <link rel="import" href="../bower_components/polymerfire/firebase-query.html">
+
+      <dom-module id="tm-${1:<APPLICATION_NAME>}">
+        <template>
+          <style>
+            :host {
+              display: block;
+            }
+
+            paper-card {
+              width:400px;
+            }
+          </style>
+
+          <firebase-app
+            name="{{firebase.appName}}"
+            app="{{firebase.app}}"
+            auth-domain="{{firebase.authDomain}}"
+            database-url="{{firebase.databaseUrl}}"
+            api-key="{{firebase.apiKey}}">
+          </firebase-app>
+
+          <firebase-auth
+            id="auth"
+            app-name="{{firebase.appName}}"
+            user="{{auth.user}}"
+            status-known="{{auth.statusKnown}}"
+            signed-in="{{auth.signedIn}}"
+            provider="{{auth.provider}}"
+            on-error="_authOnError">
+          </firebase-auth>
+
+          <firebase-document
+            id="document"
+            app-name="{{firebase.appName}}"
+            path="/${2:<DATABASE_ROOT_NODE>}/${3:<OBJECT_PATH>}"
+            data="{{${4:<OBJECT_PROPERTY>}}}">
+          </firebase-document>
+
+          <firebase-query
+            id="query"
+            app-name="{{firebase.appName}}"
+            path="/${2:<DATABASE_ROOT_NODE>}/${5:<LIST_PATH>}"
+            data="{{${6:<LIST_PROPERTY>}}}">
+          </firebase-query>
+
+          <paper-card heading="Authentication">
+            <paper-input label="Status Known" value="{{auth.statusKnown}}"></paper-input>
+            <paper-input label="Signed In" value="{{auth.signedIn}}"></paper-input>
+            <paper-input label="Provider" value="{{auth.provider}}"></paper-input>
+            <paper-input label="User UID" value="{{auth.user.uid}}"></paper-input>
+            <paper-input label="User Name" value="{{auth.user.displayName}}"></paper-input>
+          </paper-card>
+
+          <paper-card heading="Firebase Details">
+            <paper-input label="Application Name" value="{{firebase.appName}}"></paper-input>
+            <paper-input label="Authentication Domain" value="{{firebase.authDomain}}"></paper-input>
+            <paper-input label="Database URL" value="{{firebase.databaseUrl}}"></paper-input>
+            <paper-input label="API Key" value="{{firebase.apiKey}}"></paper-input>
+            <paper-button raised on-tap="_login" disabled$="{{auth.signedIn}}">Login</paper-button>
+            <paper-button raised on-tap="_logout" disabled$="{{!auth.signedIn}}">Logout</paper-button>
+            <paper-button raised on-tap="_refresh" disabled$="{{!auth.signedIn}}">Refresh</paper-button>
+          </paper-card>
+
+          <h2>{{${4:<OBJECT_PROPERTY>}.${8:<SUB_PROP_1>}}} ({{${4:<OBJECT_PROPERTY>}.${9:<SUB_PROP_2>}}})</h2>
+          <ul>
+            <template is="dom-repeat" items="{{${6:<LIST_PROPERTY>}}}" as="${7:<LIST_ITEM>}">
+              <li>{{${7:<LIST_ITEM>}.${10:<ITEM_PROP_1>}}} ({{${7:<LIST_ITEM>}.${11:<ITEM_PROP_2>}}})</li>
+            </template>
+          </ul>
+        </template>
+        <script>
+          (function(Polymer) {
+            Polymer({
+              is: 'tm-${1:<APPLICATION_NAME>}',
+              properties: {
+                auth: {
+                  type: Object,
+                  notify: true,
+                  value: {
+                    user: {},
+                    signedIn: false,
+                    provider: 'google',
+                    statusKnown: false
+                  }
+                },
+                firebase: {
+                  type: Object,
+                  notify: true,
+                  value: {
+                    appName: '${12:<FIREBASE_APP_NAME>}',
+                    app: {},
+                    authDomain: '${12:<FIREBASE_APP_NAME>}.firebaseapp.com',
+                    databaseUrl: 'https://${12:<FIREBASE_APP_NAME>}.firebaseio.com/',
+                    apiKey: '${13:<FIREBASE_API_KEY>}'
+                  }
+                },
+                ${4:<OBJECT_PROPERTY>}: {
+                  type: Object,
+                  value: {},
+                  notify: true
+                },
+                ${6:<LIST_PROPERTY>}: {
+                  type: Array,
+                  value: [],
+                  notyfy: true
+                }
+              },
+              observers: [
+                'debug(auth.user.uid)'
+              ],
+              _refresh: function() {
+                this.$.document.attached();
+                this.$.query.attached();
+              },
+              _login: function() {
+                this.$.auth.signInWithPopup();
+              },
+              _logout: function() {
+                this.$.auth.signOut();
+              },
+              debug: function(object) {
+                console.log(object);
+              },
+              ready: function() {
+                console.log('Element tm-${1:<APPLICATION_NAME>} has been created.');
+              }
+            });
+          })(window.Polymer);
+        </script>
+      </dom-module>
+    """

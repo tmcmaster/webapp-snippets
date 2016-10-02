@@ -2,6 +2,5 @@
   "paper input":
     "prefix": "paper-input"
     "body": """
-    <paper-input label="$1"></paper-input>
-    $0
+    <paper-input label="$1" value="{{$2}}"></paper-input>$0
     """

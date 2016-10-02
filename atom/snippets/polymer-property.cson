@@ -1,0 +1,9 @@
+'.text.html':
+  'Polymer Property':
+    'prefix': 'polymer-property'
+    'body': '''
+    ${1:prop}: {
+      type: ${2:String},
+      notify: ${3:true}${4:,\n\tvalue: ${5:''}}
+    }$0
+    '''

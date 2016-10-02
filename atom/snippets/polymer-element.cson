@@ -2,33 +2,33 @@
   "Polymer Element":
     "prefix": "polymer-element"
     "body": """
-    <dom-module id="$1">
+    $0
+    <dom-module id="tm-$1">
       <template>
         <style>
           :host {
             display: block;
           }
-        </style>
-        $4
+        </style>${3}
       </template>
       <script>
         (function(Polymer) {
           Polymer({
-            is: '$1',
+            is: 'tm-${1}',
             properties: {
-              $2: {
+              ${2}: {
                 type:String,
                 notify:true
               }
             },
             observers: [
-              'debug($2)'
+              'debug(${2})'
             ],
             debug: function(object) {
               console.log(object);
             },
             ready: function() {
-              console.log('$1 has been created.');$3
+              console.log('Element tm-${1} has been created.');
             }
           });
         })(window.Polymer);

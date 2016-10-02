@@ -1,6 +1,6 @@
 ".text.html":
-  "html import":
-    "prefix": "hi"
+  "Import Misc":
+    "prefix": "import-misc"
     "body": """
     <link rel="import" href="${1:bower_components}/${2}/${2}.html">
     $0

@@ -5,7 +5,7 @@
       <firebase-query
           id="query-${1}"
           app-name="${2:<YOUR-FIREBASE-APP>}"
-          path="/${3:data}"
-          data="{{${4:data}}}">
+          path="/${3:<PATH>}"
+          data="{{${4:list}}}">
       </firebase-query>$0
     """
