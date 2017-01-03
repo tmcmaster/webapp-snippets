@@ -140,4 +140,29 @@
           })(window.Polymer);
         </script>
       </dom-module>
+
+      <!--
+                    Application details
+
+             Application Name: ${1}
+           Database Root Node: ${2}
+
+                  Object Path: ${2}/${3}
+              Object Property: ${4}
+                    List Path: ${2}/${5}
+                List Property: ${6}
+
+                    List Item: ${7}
+
+        Object Sub Property 1: ${4}.${8}
+        Object Sub Property 2: ${4}.${9}
+
+         List Item Property 1: ${6}.${10}
+         List Item Property 2: ${6}.${11}
+
+            Firebase App Name: ${12}
+             Firebase API Key: ${13}
+
+                Tim McMaster (tim@mcmaster.id.au)
+      -->
     """
